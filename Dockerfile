@@ -17,6 +17,7 @@ COPY ./nodemon.json ./
 # Copy server.ts
 COPY ./src/server.ts ./src/
 
+#port 5000
 EXPOSE 5050
 
 # Define default command to run your application
