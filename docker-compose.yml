@@ -3,10 +3,10 @@ services:
   web:
     build: .
     ports:
-      -"4001:5050"
+      - "4001:5050"  # Map host port 4001 to container port 5050
     depends_on:
       - mongo
   mongo:
     image: mongo
     ports:
-      - "27017:27017"
+      - "27017:27017"  # Map host port 27017 to container port 27017 (default MongoDB port)
