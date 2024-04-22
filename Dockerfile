@@ -1,7 +1,7 @@
-FROM node
+FROM node:18-alpine
 
 # Set working directory
-WORKDIR /app
+WORKDIR /app/YouApp
 
 # Copy package.json and package-lock.json
 COPY package.json .
@@ -17,7 +17,7 @@ COPY . ./
 # COPY ./src/server.ts ./src/
 
 #port 5000
-EXPOSE 5050
+EXPOSE 5000
 
 # Define default command to run your application
 CMD ["npm", "start"]

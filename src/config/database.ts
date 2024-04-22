@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-export const MONGO_URL = "mongodb+srv://Auth_test:admin@cluster0.cmvtsvs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+//export const MONGO_URL = "mongodb+srv://Auth_test:admin@cluster0.cmvtsvs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+export const MONGO_URL = "mongodb://localhost:27017/";
 
 // Connect to MongoDB
 mongoose.connect(MONGO_URL, {
