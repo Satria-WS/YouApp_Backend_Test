@@ -26,10 +26,23 @@ const profileModel = new mongoose.Schema({
     type: Number,
     required: true
   },
-  weigth: {
+  weight: {
     type: Number,
     required: true
   }
 })
-export const profileSchema = mongoose.model("User", profileModel);
+export const ProfileSchema = mongoose.model("Profile", profileModel);
 
+// const doc = new ProfileSchema({
+//   displayName: "John Doe",
+//   gender: "male",
+//   birthday: "1990-01-01",
+//   horoscope: "Aquarius",
+//   zodiac: "Capricorn",
+//   height: 180,
+//   weight: 75
+// });
+
+// doc.save().then(savedDoc => {
+//   savedDoc === doc; // true
+// });

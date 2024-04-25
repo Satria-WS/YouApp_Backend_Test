@@ -4,5 +4,5 @@ import { isAuthenticated } from "../middlewares/index";
 
 
 export default (router: express.Router) => {
-  router.get("/profile", isAuthenticated, getAllProfiles);
+  router.get("/profiles", isAuthenticated, getAllProfiles);
 };
