@@ -25,3 +25,17 @@ Content-Type: application/json
 ### get profile
 GET   http://localhost:5000/profiles
 
+
+### create profile
+POST   http://localhost:5000/profiles
+Content-Type: application/json
+
+ {
+   "displayName": "John Doe",
+   "gender": "male",
+   "birthday": "1990-01-01",
+   "horoscope": "Aquarius",
+   "zodiac": "Capricorn",
+   "height": 180,
+   "weight": 75
+ }
