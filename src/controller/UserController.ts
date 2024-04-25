@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getUsers,deleteUserById , getUserById } from '../action/users';
+import { getUsers,deleteUserById , getUserById ,updateUserById} from '../action/users';
 
 export const getAllUsers = async (req: express.Request, res: express.Response) => {
   try {
@@ -51,7 +51,7 @@ export const updateUser = async (req: express.Request, res: express.Response) =>
       return res.sendStatus(400);
     }
 
-    const user = await getUserById(id);
+    const user = await updateUserById(id , username);
     
     user.username = username;
     await user.save();
