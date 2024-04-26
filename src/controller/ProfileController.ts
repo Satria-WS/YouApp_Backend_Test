@@ -15,36 +15,23 @@ export const getAllProfiles = async (req: express.Request, res: express.Response
   }
 }
 
-// Function to check if a string is a valid date
-const isValidDate = (dateString: string): boolean => {
-  const regEx = /^\d{4}-\d{2}-\d{2}$/;
-  if (!dateString.match(regEx)) return false;  // Invalid format
-  const d = new Date(dateString);
-  const dNum = d.getTime();
-  if (!dNum && dNum !== 0) return false; // NaN value, invalid date
-  return d.toISOString().slice(0, 10) === dateString;
-};
+
 export const createProfile = async (req: express.Request, res: express.Response) => {
   try {
-    const { displayName, gender, birthday, horoscope, zodiac, height, weight } = req.body;
+    const { displayName, gender, birthday,  height, weight } = req.body;
 
        // Check if required fields are missing
        if (!displayName || !gender || !birthday || !height || !weight) {
         return res.status(400).json({ error: "Missing required fields" });
       }
-      //check if type data
-      if (typeof displayName !== 'string' || typeof gender !== 'string' || typeof birthday !== 'string' || typeof horoscope !== 'string' || typeof zodiac !== 'string' || typeof height !== 'number' || typeof weight !== 'number') {
+    //   //check if type data
+      if (typeof displayName !== 'string' || typeof gender !== 'string' || typeof birthday !== 'string'  || typeof height !== 'number' || typeof weight !== 'number') {
       return res.status(400).json({ error: "Invalid data format" });
     }
     
     const createProfile = await ProfileSchema.create({
-      displayName: displayName,
-      gender: gender,
-      birthday: birthday,
-      horoscope: horoscope,
-      zodiac:zodiac,
-      height: height,
-      weight: weight
+      ...req.body,
+      birthday: new Date(birthday).toISOString(),
     });
     return res.status(200).json({
       data: createProfile,

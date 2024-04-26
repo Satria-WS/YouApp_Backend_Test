@@ -1,85 +1,79 @@
 import mongoose, { Document } from "mongoose";
 
-
-
 const profileModel = new mongoose.Schema({
   displayName: {
     type: String,
-    required: true
+    required: true,
   },
   gender: {
     type: String,
-    enum:["male","female"],
-    required: true
+    enum: ["male", "female"],
+    required: true,
   },
   birthday: {
-    type: String,
-    required: true
+    type: Date,
+    required: true,
   },
   horoscope: {
     type: String,
-    required: true
   },
   zodiac: {
     type: String,
-    required: true
   },
   height: {
     type: Number,
-    required: true
+    required: true,
   },
   weight: {
     type: Number,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-// profileModel.pre('save', function (next) {
-//   const birthday = this.birthday;
-//   const month = birthday.getMonth() + 1; // getMonth() returns 0-based index
-//   const day = birthday.getDate();
+profileModel.pre("save", function (next) {
+  const birthday = this.birthday;
+  const month = birthday.getMonth() + 1; // getMonth() returns 0-based index
+  const day = birthday.getDate();
 
-//     // Calculate horoscope
-//     const horoscopes = [
-//       "Capricornus (Goat)",
-//       "Aquarius (Water Bearer)",
-//       "Pisces (Fish)",
-//       "Aries (Ram)",
-//       "Taurus (Bull)",
-//       "Gemini (Twins)",
-//       "Cancer (Crab)",
-//       "Leo (Lion)",
-//       "Virgo (Virgin)",
-//       "Libra (Balance)",
-//       "Scorpius (Scorpion)",
-//       "Sagittarius (Archer)"
-//     ];
-//     const horoscopeIndex = (month + (day > 20 ? 1 : 0) - 1) % 12;
-//     this.horoscope = horoscopes[horoscopeIndex];
-  
-//     // Calculate zodiac
-//     const zodiacSigns = [
-//       "Capricornus",
-//       "Aquarius",
-//       "Pisces",
-//       "Aries",
-//       "Taurus",
-//       "Gemini",
-//       "Cancer",
-//       "Leo",
-//       "Virgo",
-//       "Libra",
-//       "Scorpio",
-//       "Sagittarius"
-//     ];
-//     const zodiacIndex = (month + (day > 20 ? 1 : 0) - 1) % 12;
-//     this.zodiac = zodiacSigns[zodiacIndex];
-  
-//     next();
-// })
+  // Calculate horoscope
+  const horoscopes = [
+    "Capricornus",
+    "Aquarius",
+    "Pisces ",
+    "Aries",
+    "Taurus",
+    "Gemini",
+    "Cancer",
+    "Leo ",
+    "Virgo",
+    "Libra",
+    "Scorpius",
+    "Sagittarius",
+  ];
+  const horoscopeIndex = (month + (day > 20 ? 1 : 0) - 1) % 12;
+  this.horoscope = horoscopes[horoscopeIndex].toString();
+
+  // Calculate zodiac
+  const zodiacSigns = [
+    "Rat",
+    "Ox",
+    "Tiger",
+    "Rabbit",
+    "Dragon",
+    "Snake",
+    "Horse",
+    "Goat",
+    "Monkey",
+    "Rooster",
+    "Dog",
+    "Pig",
+  ];
+  const zodiacIndex = (birthday.getFullYear() - 1900) % 12;
+  this.zodiac = zodiacSigns[zodiacIndex].toString();
+
+  next();
+});
 export const ProfileSchema = mongoose.model("Profile", profileModel);
-
-
 
 // const doc = new ProfileSchema({
 //   displayName: "John Doe",
