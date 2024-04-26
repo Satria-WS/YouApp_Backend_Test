@@ -1,8 +1,10 @@
 import express from "express";
-import { createProfile, getAllProfiles } from "../controller/ProfileController";
+import { createProfile, getAllProfiles, getProfileById, updateProfile } from "../controller/ProfileController";
 import { isAuthenticated } from "../middlewares/index";
 
 export default (router: express.Router) => {
-  router.get("/profiles", isAuthenticated, getAllProfiles);
-  router.post("/profiles", isAuthenticated, createProfile);
+  router.get("/api/profiles", isAuthenticated, getAllProfiles);
+  router.get("/api/profiles/:id", isAuthenticated, getProfileById);
+  router.post("/api/profiles", isAuthenticated, createProfile);
+  router.patch("/api/profiles/:id",isAuthenticated,updateProfile)
 };

@@ -1,5 +1,5 @@
 ### create user
-POST  http://localhost:5000/auth/register
+POST  http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
@@ -10,10 +10,10 @@ Content-Type: application/json
 
 
 ### get user
-GET   http://localhost:5000/users
+GET   http://localhost:5000/api/users
 
 ### login user
-POST    http://localhost:5000/auth/login
+POST    http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
@@ -23,17 +23,37 @@ Content-Type: application/json
 
 
 ### get profile
-GET   http://localhost:5000/profiles
+GET   http://localhost:5000/api/profiles
+
+### get profile
+GET   http://localhost:5000/api/profiles/662b53b4cb2facbde95d21ed
+
+
 
 
 ### create profile
-POST   http://localhost:5000/profiles
+POST   http://localhost:5000/api/profiles
 Content-Type: application/json
 
  {
-   "displayName": "John",
+   "displayName": "Kaka",
    "gender": "male",
    "birthday": "1993-01-01",
+   "height": 180,
+   "weight": 75
+ }
+
+
+
+
+### create profile
+PATCH    http://localhost:5000/api/profiles/662b44bb6a9968727303e590
+Content-Type: application/json
+
+ {
+   "displayName": "jOHN CENA cimeng",
+   "gender": "famale",
+   "birthday": "1993-01-03",
    "height": 180,
    "weight": 75
  }
