@@ -22,10 +22,10 @@ Content-Type: application/json
 }
 
 
-### get profile
+### get all profile
 GET   http://localhost:5000/api/profiles
 
-### get profile
+### get profile BY ID
 GET   http://localhost:5000/api/profiles/662b53b4cb2facbde95d21ed
 
 
@@ -36,7 +36,7 @@ POST   http://localhost:5000/api/profiles
 Content-Type: application/json
 
  {
-   "displayName": "Kaka",
+   "displayName": "John",
    "gender": "male",
    "birthday": "1993-01-01",
    "height": 180,
@@ -56,4 +56,18 @@ Content-Type: application/json
    "birthday": "1993-01-03",
    "height": 180,
    "weight": 75
+ }
+
+
+
+
+
+### create message
+POST   http://localhost:5000/api/message
+Content-Type: application/json
+
+ {
+   "sender": "Kaka",
+   "recipient": "Balo",
+   "message": "xxxxx"
  }

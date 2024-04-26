@@ -5,7 +5,7 @@ import express from 'express';
 export const getAllProfiles = async (req: express.Request, res: express.Response) => {
   try {
     const profile = await ProfileSchema.find();
-    // return res.status(200).send("hello world")
+    //  return res.status(200).send("hello world")
     return res.status(200).json({
       data: profile,
       message:"get Profile succesfull"
@@ -49,7 +49,10 @@ export const createProfile = async (req: express.Request, res: express.Response)
     }
     
     const createProfile = await ProfileSchema.create({
-      ...req.body,
+      displayName,
+      gender,
+      height,
+      weight,
       birthday: new Date(birthday).toISOString(),
     });
     return res.status(200).json({
