@@ -31,7 +31,7 @@ POST   http://localhost:5000/profiles
 Content-Type: application/json
 
  {
-   "displayName": "John Doe",
+   "displayName": "John",
    "gender": "male",
    "birthday": "1990-01-01",
    "horoscope": "Aquarius",
