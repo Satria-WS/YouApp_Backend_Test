@@ -8,6 +8,7 @@ export const sendMessage = async (req: express.Request, res: express.Response) =
     const { recipient, message,sender } = req.body;
     // const sender = req.user.userId; // Assuming authenticated user
     // const sender = req.user._id; // Assuming authenticated user
+    const senderId = req.params.id;
   
 
     // Create a new message document
